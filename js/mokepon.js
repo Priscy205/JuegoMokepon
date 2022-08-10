@@ -90,6 +90,16 @@ function crearMensaje(resultadoAtaques){
     sectionMensajes.appendChild(parrafo)
 }
 
+//en el video usa resulltado Final
+function crearMensajeFinal(resultadoJuego){
+    let sectionMensajes = document.getElementById('mensajes')
+
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Fin de la partida. ' + resultadoJuego
+
+    sectionMensajes.appendChild(parrafo)
+}
+
 function aleatorio(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min )
 }
@@ -110,6 +120,18 @@ function resultadoDelCombate (){
         crearMensaje("PERDISTE")
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
+    }
+
+    //revisando las vidas
+    RevisarVidas()
+
+}
+
+function RevisarVidas(){
+    if (vidasEnemigo == 0){
+        crearMensajeFinal("¡FELICIDADES! Has ganado 🤩")
+    }else if (vidasJugador == 0){
+        crearMensajeFinal("¡LO SENTIMOS! Has perdido 😢")
     }
 }
 
