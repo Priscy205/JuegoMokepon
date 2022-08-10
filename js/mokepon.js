@@ -16,6 +16,11 @@ function iniciarJuego(){
 
     let botonTierra = document.getElementById ('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
+
+    //seleccionando el ID
+    let botonReiniciar = document.getElementById('boton-reiniciar')
+    //creando el escuchador de eventos (click, llamada a una función)
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 function seleccionarMascotaJugador(){
@@ -90,7 +95,7 @@ function crearMensaje(resultadoAtaques){
     sectionMensajes.appendChild(parrafo)
 }
 
-//en el video usa resulltado Final
+//en el video usa resultado Final
 function crearMensajeFinal(resultadoJuego){
     let sectionMensajes = document.getElementById('mensajes')
 
@@ -98,6 +103,14 @@ function crearMensajeFinal(resultadoJuego){
     parrafo.innerHTML = 'Fin de la partida. ' + resultadoJuego
 
     sectionMensajes.appendChild(parrafo)
+
+    //Deshabilitar los botones
+    let botonFuego = document.getElementById ('boton-fuego')
+    botonFuego.disabled = true
+    let botonAgua = document.getElementById ('boton-agua')
+    botonAgua.disabled = true
+    let botonTierra = document.getElementById ('boton-tierra')
+    botonTierra.disabled = true
 }
 
 function aleatorio(min, max){
@@ -121,10 +134,8 @@ function resultadoDelCombate (){
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
     }
-
     //revisando las vidas
     RevisarVidas()
-
 }
 
 function RevisarVidas(){
@@ -135,6 +146,8 @@ function RevisarVidas(){
     }
 }
 
-
+function reiniciarJuego() {
+    location.reload()
+}
 
 window.addEventListener('load', iniciarJuego)
