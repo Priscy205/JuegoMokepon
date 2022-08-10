@@ -1,5 +1,7 @@
 let ataqueJugador
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 //Configuración del botón
 function iniciarJuego(){
@@ -94,18 +96,21 @@ function aleatorio(min, max){
 
 //esto estoy creando yo
 function resultadoDelCombate (){
+    //llamando las etiquetas span de vidas
+    let spanVidasJugador = document.getElementById('vidas-jugador')
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
     if (ataqueEnemigo == ataqueJugador){
         crearMensaje("EMPATE")
-    }else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
+    }else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA' || ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO' || ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
         crearMensaje("GANASTE")
-    }else if(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO'){
-        crearMensaje("GANASTE")   
-    }else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
-        crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     }else {
         crearMensaje("PERDISTE")
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
     }
-
 }
 
 
