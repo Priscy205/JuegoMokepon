@@ -3,8 +3,16 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
-//Configuración del botón
+//Configuración de botones
 function iniciarJuego(){
+    //invisible la seccion de elegir ataque
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+
+    //invisible el botón reiniciar
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
@@ -24,6 +32,17 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador(){
+    //invisible la seccion seleccionar mascota
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
+    //invisible el botón reiniciar
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
     let inputRatigueya = document.getElementById('ratigueya')
@@ -97,6 +116,10 @@ function crearMensaje(resultadoAtaques){
 
 //en el video usa resultado Final
 function crearMensajeFinal(resultadoJuego){
+    //Visible al botón reiniciar
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
+
     let sectionMensajes = document.getElementById('mensajes')
 
     let parrafo = document.createElement('p')
