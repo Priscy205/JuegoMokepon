@@ -34,21 +34,33 @@ body{
 }
 
 #tarjeta-de-mokepon{
-    width: 100px;
+    width: 170px;
     height: 100px;
     background: beige;
     padding: 10px;
+    margin:30px;
     box-sizing: border-box;
     border-radius: 20px;
+    display: flex; /*permite ubicar uno a lado del otro*/
+}
+
+#tarjeta-de-mokepon img{
+    width: 115px;
 }
 
 #boton-mascota{
-    width: 100px;
-    height: 35px;
-    background: rgb(52, 172, 70);
+    width: 180px;
+    height: 45px;
+    background: #8BDB81;
     padding: 10px;
     box-sizing: border-box;
-    margin: 10px;
-    border: 1px solid gray;
+    margin: 30px;
+    border: 1px solid  black;
+    font-family: 'DynaPuff', cursive;
+    border-radius: 20px;
+    font-size: 18px;
+}
+input{
+    display: none;
 }
 
