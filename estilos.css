@@ -13,29 +13,31 @@ body{
 }
 
 #titulo{
+    margin: 70px 40px 35px 40px;
     color: #8BDB81;
     font-size: 35px;
 }
 
 #subtitulo{
     color: #ED5EDD;
-    width: 255px;
+    width: 293px;
     height: 50px;
-    background-color: #E7ED9B;
     padding: 10px;
     box-sizing: border-box;
     margin: 10px;
     border-radius: 20px;
+    font-size: 28px;
 }
 
 #tarjetas{
     display: flex;
     gap: 10px;
+    font-size: 20px;
 }
 
 #tarjeta-de-mokepon{
-    width: 170px;
-    height: 100px;
+    width: 222px;
+    height: 155px;
     background: beige;
     padding: 10px;
     margin:30px;
@@ -45,7 +47,7 @@ body{
 }
 
 #tarjeta-de-mokepon img{
-    width: 115px;
+    width: 125px;
 }
 
 #boton-mascota{
