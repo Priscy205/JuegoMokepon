@@ -43,18 +43,18 @@ function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
     sectionSeleccionarAtaque.style.display = 'block'
 
-    let inputHipodoge = document.getElementById('hipodoge')
-    let inputCapipepo = document.getElementById('capipepo')
-    let inputRatigueya = document.getElementById('ratigueya')
+    let inputWooper = document.getElementById('wooper')
+    let inputPurrloin = document.getElementById('purrloin')
+    let inputHorsea = document.getElementById('horsea')
 
     let spanMascotaJugador = document.getElementById('mascota-jugador')
 
-    if (inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = 'Hipodoge'
-    }else if(inputCapipepo.checked){
-        spanMascotaJugador.innerHTML = 'Capipepo'
-    }else if(inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = 'Ratigueya'
+    if (inputWooper.checked){
+        spanMascotaJugador.innerHTML = 'Wooper'
+    }else if(inputPurrloin.checked){
+        spanMascotaJugador.innerHTML = 'Purrloin'
+    }else if(inputHorsea.checked){
+        spanMascotaJugador.innerHTML = 'Horsea'
     }else{
         alert('Selecciona una mascota')
     }
@@ -68,11 +68,11 @@ function seleccionarMascotaEnemigo(){
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
     if (mascotaAleatorio ==1){
-        spanMascotaEnemigo.innerHTML = 'Hipodoge'
+        spanMascotaEnemigo.innerHTML = 'Wooper'
     }else if (mascotaAleatorio == 2){
-        spanMascotaEnemigo.innerHTML = 'Capipepo'
+        spanMascotaEnemigo.innerHTML = 'Purrloin'
     }else {
-        spanMascotaEnemigo.innerHTML = 'Ratigueya'
+        spanMascotaEnemigo.innerHTML = 'Horsea'
     }
 }
 
