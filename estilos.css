@@ -1,0 +1,34 @@
+#titulo{
+    color: #ab31b9e7;
+    width: 306px;
+    height: 50px;
+    background-color:beige;
+}
+
+#seleccionar-mascota{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*centra los contenedores hijos*/ 
+    align-items: center;
+}
+
+#tarjeta-de-mokepon{
+    width: 100px;
+    height: 100px;
+    background: beige;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+#boton-mascota{
+    width: 100px;
+    height: 35px;
+    background: rgb(52, 172, 70);
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
