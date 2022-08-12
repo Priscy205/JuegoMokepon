@@ -16,6 +16,7 @@ body{
     margin: 70px 40px 35px 40px;
     color: #8BDB81;
     font-size: 35px;
+    text-shadow: black 1px 0 15px;
 }
 
 #subtitulo{
@@ -27,6 +28,8 @@ body{
     margin: 10px;
     border-radius: 20px;
     font-size: 28px;
+    text-align: center;
+    text-shadow: black 1px 0 15px;
 }
 
 #tarjetas{
@@ -44,6 +47,7 @@ body{
     box-sizing: border-box;
     border-radius: 20px;
     display: flex; /*permite ubicar uno a lado del otro*/
+    text-shadow: rgb(138, 59, 147) 5px 5px 6px;
 }
 
 #tarjeta-de-mokepon img{
@@ -66,3 +70,49 @@ input{
     display: none;
 }
 
+#seleccionar-ataque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+} 
+
+.botonAtaque{
+    background-color: #8BDB81;
+    padding: 10px;
+    box-sizing: border-box;
+    border-color: transparent;
+    margin: 30px;
+    font-family: 'DynaPuff', cursive;
+    border-radius: 20px;
+    font-size: 18px;
+    width: 130px;
+    text-align: center;
+}
+
+#mensajes p {
+    display: flex;
+    color: #ED5EDD;
+    width: 675px;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: black 5px 5px 6px;
+}
+
+#boton-reiniciar{
+    background-color: #8BDB81;
+    padding: 10px;
+    box-sizing: border-box;
+    border-color: transparent;
+    margin: 30px;
+    font-family: 'DynaPuff', cursive;
+    border-radius: 20px;
+    font-size: 18px;
+    width: 130px;
+    text-align: center;
+}
