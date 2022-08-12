@@ -128,7 +128,7 @@ function crearMensajeFinal(resultadoJuego){
 
     let sectionMensajes = document.getElementById('resultado')
 
-    sectionMensajes.innerHTML = 'Fin de la partida. ' + resultadoJuego
+    sectionMensajes.innerHTML = resultadoJuego
 
     //Deshabilitar los botones
     let botonFuego = document.getElementById ('boton-fuego')

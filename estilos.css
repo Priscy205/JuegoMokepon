@@ -13,7 +13,7 @@ body{
 }
 
 #titulo{
-    margin: 70px 40px 35px 40px;
+    margin: 50px 40px 35px 40px;
     color: #8BDB81;
     font-size: 35px;
     text-shadow: black 1px 0 15px;
@@ -126,4 +126,30 @@ input{
 #ataques{
     display: grid;
     grid-template-columns: 170px 170px;
+}
+
+#vidas-jugador, #vidas-enemigo{
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+#tarjetas-ataque{
+    display: flex;
+    gap: 10px;
+}
+
+#ataques-jugador, #ataques-enemigo{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+@media (max-width:750px){
+    #tarjetas{
+        flex-direction:column;
+    }
+
+    #tarjetas-ataque{
+        flex-direction:column;
+    }
 }
