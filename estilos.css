@@ -57,10 +57,15 @@ body{
     padding: 10px;
     box-sizing: border-box;
     margin: 30px;
-    border: 1px solid  black;
+    border: transparent;
     font-family: 'DynaPuff', cursive;
     border-radius: 20px;
     font-size: 18px;
+}
+
+#boton-mascota:hover{
+    background: #14C38E;
+    box-shadow: #00FFAB 2px 0px 50px ;
 }
 
 input{
@@ -71,8 +76,6 @@ input:checked + label {
     border: 3px solid  #570a57;
     box-shadow: #f10086 2px 0px 50px ;
 }
-
-
 
 #seleccionar-ataque{
     display: flex;
@@ -92,6 +95,11 @@ input:checked + label {
     font-size: 18px;
     width: 130px;
     text-align: center;
+}
+
+.botonAtaque:hover{
+    background: #59CE8F;
+    box-shadow: #00FFAB 2px 0px 50px ;
 }
 
 #mensajes{
@@ -125,6 +133,11 @@ input:checked + label {
     font-size: 18px;
     width: 130px;
     text-align: center;
+}
+
+#boton-reiniciar:hover{
+    background: #59CE8F;
+    box-shadow: #B4FF9F 2px 0px 50px ;
 }
 
 #ataques{
