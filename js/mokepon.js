@@ -32,6 +32,19 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+class Mokepon {
+    constructor(nombre, foto, vida){
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+    }
+}
+
+let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5)
+let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5)
+let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5)
+
+
 //Configuración de botones
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
