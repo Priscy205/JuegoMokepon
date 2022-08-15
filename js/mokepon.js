@@ -1,34 +1,30 @@
 //para la función iniciar juego
-let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')//invisible la seccion de elegir ataque
-let sectionReiniciar = document.getElementById('reiniciar')//invisible el botón reiniciar
-let botonMascotaJugador = document.getElementById('boton-mascota')
-let botonFuego = document.getElementById ('boton-fuego')
-let botonAgua = document.getElementById ('boton-agua')
-let botonTierra = document.getElementById ('boton-tierra')
-let botonReiniciar = document.getElementById('boton-reiniciar')
+const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')//invisible la seccion de elegir ataque
+const sectionReiniciar = document.getElementById('reiniciar')//invisible el botón reiniciar
+const botonMascotaJugador = document.getElementById('boton-mascota')
+const botonFuego = document.getElementById ('boton-fuego')
+const botonAgua = document.getElementById ('boton-agua')
+const botonTierra = document.getElementById ('boton-tierra')
+const botonReiniciar = document.getElementById('boton-reiniciar')
 
 //para la función seleccionarMascotaJugador
-let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-let inputWooper = document.getElementById('wooper')
-let inputPurrloin = document.getElementById('purrloin')
-let inputHorsea = document.getElementById('horsea')
-let spanMascotaJugador = document.getElementById('mascota-jugador')
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const inputWooper = document.getElementById('wooper')
+const inputPurrloin = document.getElementById('purrloin')
+const inputHorsea = document.getElementById('horsea')
+const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 //para la funcion seleccionarMascotaEnemigo
-let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
 //para la funcion resultadoDelCombate
-let spanVidasJugador = document.getElementById('vidas-jugador')
-let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+const spanVidasJugador = document.getElementById('vidas-jugador')
+const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
 //para la funcion de crearMensaje
-let sectionMensajes = document.getElementById('resultado')
-let ataquesDelJugador = document.getElementById('ataques-del-jugador')
-let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
-
-//para la funcion crearMensajeFinal
-//let sectionReiniciar = document.getElementById('reiniciar')
-//let sectionMensajes = document.getElementById('resultado')
+const sectionMensajes = document.getElementById('resultado')
+const ataquesDelJugador = document.getElementById('ataques-del-jugador')
+const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
 
 let ataqueJugador
@@ -119,16 +115,15 @@ function crearMensaje(resultadoAtaques){
     ataquesDelEnemigo.appendChild(nuevoAtaqueEnemigo)
 }
 
-//en el video usa resultado Final
+//en el video usa resultadoFinal
 function crearMensajeFinal(resultadoJuego){
     sectionReiniciar.style.display = 'flex'//Visible al botón reiniciar
 
     sectionMensajes.innerHTML = resultadoJuego
-
-    //Deshabilitar los botones
+    
     botonFuego.disabled = true
     botonAgua.disabled = true
-    botonTierra.disabled = true
+    botonTierra.disabled = true//Deshabilitar los botones
 }
 
 function aleatorio(min, max){
