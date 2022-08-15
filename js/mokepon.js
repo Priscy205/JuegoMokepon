@@ -26,7 +26,7 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-
+let mokepones = []  //construcción de un arreglo
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
@@ -44,6 +44,8 @@ let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5)
 let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5)
 let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5)
 
+mokepones.push(wooper,purrloin,horsea)
+console.log(mokepones)
 
 //Configuración de botones
 function iniciarJuego(){
