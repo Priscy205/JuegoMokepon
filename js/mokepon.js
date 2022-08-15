@@ -107,11 +107,11 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarAtaque.style.display = 'flex'
 
     if (inputWooper.checked){
-        spanMascotaJugador.innerHTML = 'Wooper'
+        spanMascotaJugador.innerHTML = inputWooper.id
     }else if(inputPurrloin.checked){
-        spanMascotaJugador.innerHTML = 'Purrloin'
+        spanMascotaJugador.innerHTML = inputPurrloin.id
     }else if(inputHorsea.checked){
-        spanMascotaJugador.innerHTML = 'Horsea'
+        spanMascotaJugador.innerHTML = inputHorsea.id
     }else{
         alert('Selecciona una mascota')
     }
