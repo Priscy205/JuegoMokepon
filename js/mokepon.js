@@ -24,6 +24,9 @@ const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 
+//ESTOY CREANDO YO
+//const tarjetasAtaque = documente.getElemntById('tarjetasAtaque')
+
 let mokepones = []  //construcción de un arreglo
 let ataqueJugador
 let ataqueEnemigo
@@ -31,6 +34,7 @@ let opcionDeMokepones
 let inputWooper
 let inputPurrloin
 let inputHorsea 
+let mascotaJugador
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -108,15 +112,30 @@ function seleccionarMascotaJugador(){
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
+        mascotaJugador = inputWooper.id
     }else if(inputPurrloin.checked){
         spanMascotaJugador.innerHTML = inputPurrloin.id
+        mascotaJugador = inputPurrloin.id
     }else if(inputHorsea.checked){
         spanMascotaJugador.innerHTML = inputHorsea.id
+        mascotaJugador = inputHorsea.id
     }else{
         alert('Selecciona una mascota')
+        location.reload()
     }
 
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
+}
+
+function extraerAtaques(mascotaJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++){
+        if(mascotaJugador == mokepones[i].nombre){
+            ataques = mokepones[i].ataques
+        }        
+    }
+    mostrarAtaques(ataques)
 }
 
 function seleccionarMascotaEnemigo(){
