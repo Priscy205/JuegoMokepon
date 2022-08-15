@@ -37,6 +37,7 @@ class Mokepon {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataques = []
     }
 }
 
@@ -44,8 +45,29 @@ let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5)
 let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5)
 let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5)
 
-mokepones.push(wooper,purrloin,horsea)
-console.log(mokepones)
+wooper.ataques.push(
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'}
+)
+
+purrloin.ataques.push(
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'}
+)
+
+horsea.ataques.push(
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'}
+)
 
 //Configuración de botones
 function iniciarJuego(){
