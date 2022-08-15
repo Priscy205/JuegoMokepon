@@ -9,9 +9,6 @@ const botonReiniciar = document.getElementById('boton-reiniciar')
 
 //para la función seleccionarMascotaJugador
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const inputWooper = document.getElementById('wooper')
-const inputPurrloin = document.getElementById('purrloin')
-const inputHorsea = document.getElementById('horsea')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 //para la funcion seleccionarMascotaEnemigo
@@ -31,6 +28,9 @@ let mokepones = []  //construcción de un arreglo
 let ataqueJugador
 let ataqueEnemigo
 let opcionDeMokepones
+let inputWooper
+let inputPurrloin
+let inputHorsea 
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -85,6 +85,11 @@ function iniciarJuego(){
         </label>
         `
     contenedorTarjetas.innerHTML += opcionDeMokepones
+
+        inputWooper = document.getElementById('Wooper')
+        inputPurrloin = document.getElementById('Purrloin')
+        inputHorsea = document.getElementById('Horsea')
+
     })
 
     sectionReiniciar.style.display = 'none'
