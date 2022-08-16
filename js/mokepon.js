@@ -1,6 +1,6 @@
 //para la función iniciar juego
-const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')//invisible la seccion de elegir ataque
-const sectionReiniciar = document.getElementById('reiniciar')//invisible el botón reiniciar
+const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
@@ -36,6 +36,8 @@ let botonFuego
 let botonAgua
 let botonTierra
 let botones = []
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -57,7 +59,7 @@ wooper.ataques.push(
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
     { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'}
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
 )
 
 purrloin.ataques.push(
@@ -65,7 +67,7 @@ purrloin.ataques.push(
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
     { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'}
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
 )
 
 horsea.ataques.push(
@@ -73,7 +75,7 @@ horsea.ataques.push(
     { nombre: 'agua 💧', id: 'boton-agua'},
     { nombre: 'agua 💧', id: 'boton-agua'},
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'}
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
 )
 
 mokepones.push(wooper,purrloin,horsea)
@@ -91,10 +93,9 @@ function iniciarJuego(){
         `
     contenedorTarjetas.innerHTML += opcionDeMokepones
 
-        inputWooper = document.getElementById('Wooper')
-        inputPurrloin = document.getElementById('Purrloin')
-        inputHorsea = document.getElementById('Horsea')
-
+    inputWooper = document.getElementById('Wooper')
+    inputPurrloin = document.getElementById('Purrloin')
+    inputHorsea = document.getElementById('Horsea')
     })
 
     sectionReiniciar.style.display = 'none'
@@ -130,7 +131,7 @@ function seleccionarMascotaJugador(){
 function extraerAtaques(mascotaJugador){
     let ataques
     for (let i = 0; i < mokepones.length; i++){
-        if(mascotaJugador == mokepones[i].nombre){
+        if(mascotaJugador === mokepones[i].nombre){
             ataques = mokepones[i].ataques
         }        
     }
@@ -174,27 +175,57 @@ function secuenciaAtaque(){
 }
 
 function seleccionarMascotaEnemigo(){
-    let mascotaAleatorio = aleatorio (0,mokepones.length-1)
+    let mascotaAleatoria = aleatorio (0, mokepones.length - 1)
 
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
-    ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
+    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques
     secuenciaAtaque()
 }
 
 
 function ataqueAleatorioEnemigo(){
-    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.lenght - 1)
+    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
 
-    if (ataqueAleatorio == 0 || ataqueAleatorio ==1){
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1){
         ataqueEnemigo.push('FUEGO')
-    }else if (ataqueAleatorio == 3 || ataqueAleatorio == 4){
+    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4){
         ataqueEnemigo.push('AGUA')
-    }else {
+    } else {
         ataqueEnemigo.push('TIERRA')
     }
     console.log(ataqueEnemigo)
 
-    resultadoDelCombate()
+    iniciarPelea()
+}
+
+function iniciarPelea(){
+    if(ataqueJugador.length == 5){
+        resultadoDelCombate()
+    }
+}
+
+function indexAmbosOponentes(jugador, enemigo){
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
+
+function resultadoDelCombate (){
+
+for (let index = 0; index < ataqueJugador.length; index++) {
+    if(ataqueJugador[index] === ataqueEnemigo[index]){
+        indexAmbosOponentes(index, index)
+        crearMensaje("EMPATE")
+    }
+}    
+    revisarVidas()
+}
+    
+function revisarVidas(){
+    if (vidasEnemigo == 0){
+        crearMensajeFinal("¡FELICIDADES! Has ganado 🤩")
+    }else if (vidasJugador == 0){
+        crearMensajeFinal("¡LO SENTIMOS! Has perdido 😢")
+    }
 }
 
 function crearMensaje(resultadoAtaques){
@@ -202,8 +233,8 @@ function crearMensaje(resultadoAtaques){
     let nuevoAtaqueEnemigo = document.createElement('p');
 
     sectionMensajes.innerHTML = resultadoAtaques
-    nuevoAtaqueJugador.innerHTML = ataqueJugador
-    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
+    nuevoAtaqueJugador.innerHTML = indexAtaqueJugador
+    nuevoAtaqueEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesDelJugador.appendChild(nuevoAtaqueJugador)
     ataquesDelEnemigo.appendChild(nuevoAtaqueEnemigo)
@@ -224,33 +255,9 @@ function aleatorio(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min )
 }
 
-//esto estoy creando yo
-function resultadoDelCombate (){
-    if (ataqueEnemigo == ataqueJugador){
-        crearMensaje("EMPATE")
-    }else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA' || ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO' || ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
-        crearMensaje("GANASTE")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else {
-        crearMensaje("PERDISTE")
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
-    }
-    //revisando las vidas
-    RevisarVidas()
-}
-
-function RevisarVidas(){
-    if (vidasEnemigo == 0){
-        crearMensajeFinal("¡FELICIDADES! Has ganado 🤩")
-    }else if (vidasJugador == 0){
-        crearMensajeFinal("¡LO SENTIMOS! Has perdido 😢")
-    }
-}
-
 function reiniciarJuego() {
     location.reload()
 }
 
 window.addEventListener('load', iniciarJuego)
+
