@@ -89,7 +89,7 @@ input:checked + label {
     padding: 10px;
     box-sizing: border-box;
     border-color: transparent;
-    margin: 30px;
+    margin: 25px;
     font-family: 'DynaPuff', cursive;
     border-radius: 20px;
     font-size: 18px;
