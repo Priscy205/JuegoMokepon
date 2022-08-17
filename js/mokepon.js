@@ -22,6 +22,9 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 const contenedorAtaques = document.getElementById('tarjetas-ataque')    //en el video usa contenedorAtaques
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+
 let mokepones = []  //construcción de un arreglo
 let ataqueJugador = []
 let ataqueEnemigo = []
@@ -42,6 +45,7 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let vidasJugador = 3
 let vidasEnemigo = 3
+let lienzo = mapa.getContext("2d")
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -84,6 +88,7 @@ mokepones.push(wooper,purrloin,horsea)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
+    sectionVerMapa.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -110,7 +115,18 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'//invisible la seccion seleccionar mascota
     sectionReiniciar.style.display = 'none'//invisible el botón reiniciar
-    sectionSeleccionarAtaque.style.display = 'flex'
+    //sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'flex'
+    let imagenDePurrloin = new Image()
+    imagenDePurrloin.src = purrloin.foto
+    lienzo.drawImage(
+        imagenDePurrloin,
+        20,
+        40,
+        100,
+        108
+    )
+    
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
