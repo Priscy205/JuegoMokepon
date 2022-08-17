@@ -19,6 +19,13 @@ body{
     text-shadow: black 1px 0 15px;
 }
 
+#instruccion{
+    margin: 10px 40px 10px 40px;
+    color: #8BDB81;
+    font-size: 30px;
+    text-shadow: black 1px 0 15px;
+}
+
 #subtitulo{
     color: #ED5EDD;
     font-size: 28px;
@@ -173,7 +180,6 @@ input:checked + label {
 
 #mapa{
     border: 2px solid white;
-    background: beige;
 }
 
 @media (max-width:750px){

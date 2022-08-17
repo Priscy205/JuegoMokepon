@@ -33,6 +33,7 @@ let inputWooper
 let inputPurrloin
 let inputHorsea 
 let mascotaJugador
+let mascotaJugadorObjeto
 let ataquesMokepon
 let ataquesMokeponEnemigo
 let botonFuego
@@ -47,6 +48,8 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
 let intervalo
+let mapaBackground = new Image()
+mapaBackground.src = './mascotas/mokemap.png'
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -54,8 +57,8 @@ class Mokepon {
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = 20
-        this.y = 30
+        this.x = 497
+        this.y = 26
         this.ancho = 100
         this.alto = 108
         this.mapaFoto = new Image ()
@@ -126,8 +129,6 @@ function seleccionarMascotaJugador(){
     sectionReiniciar.style.display = 'none'//invisible el botón reiniciar
     
     //sectionSeleccionarAtaque.style.display = 'flex'
-    sectionVerMapa.style.display = 'flex'
-    iniciarMapa()
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
@@ -144,6 +145,8 @@ function seleccionarMascotaJugador(){
     }
 
     extraerAtaques(mascotaJugador)
+    sectionVerMapa.style.display = 'flex'
+    iniciarMapa()
     seleccionarMascotaEnemigo()
 }
 
@@ -299,38 +302,46 @@ function reiniciarJuego() {
     location.reload()
 }
 
-function pintarPersonaje(){
-    purrloin.x = purrloin.x + purrloin.velocidadX
-    purrloin.y = purrloin.y + purrloin.velocidadY
+function pintarCanvas(){
+
+    mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
+    mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     lienzo.drawImage(
-        purrloin.mapaFoto,
-        purrloin.x,
-        purrloin.y,
-        purrloin.ancho,
-        purrloin.alto
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
+    lienzo.drawImage(
+        mascotaJugadorObjeto.mapaFoto,
+        mascotaJugadorObjeto.x,
+        mascotaJugadorObjeto.y,
+        mascotaJugadorObjeto.ancho,
+        mascotaJugadorObjeto.alto
     )
 }
 
 function moverDerecha(){
-    purrloin.velocidadX = 5
+    mascotaJugadorObjeto.velocidadX = 5
 }
 
 function moverIzquierda(){
-    purrloin.velocidadX = -5
+    mascotaJugadorObjeto.velocidadX = -5
 }
 
 function moverArriba(){
-    purrloin.velocidadY = -5
+    mascotaJugadorObjeto.velocidadY = -5
 }
 
 function moverAbajo(){
-    purrloin.velocidadY = 5
+    mascotaJugadorObjeto.velocidadY = 5
 }
 
 function detenerMovimiento(){
-    purrloin.velocidadX = 0
-    purrloin.velocidadY = 0
+    mascotaJugadorObjeto.velocidadX = 0
+    mascotaJugadorObjeto.velocidadY = 0
 }
 
 function sePresionoUnaTecla(event){
@@ -353,11 +364,22 @@ function sePresionoUnaTecla(event){
 }
 
 function iniciarMapa(){
-    intervalo = setInterval(pintarPersonaje, 50)
+    mapa.width = 1100
+    mapa.height = 600
+    mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
+    intervalo = setInterval(pintarCanvas, 50)
 
     window.addEventListener('keydown', sePresionoUnaTecla)
 
     window.addEventListener('keyup', detenerMovimiento)
+}
+
+function obtenerObjetoMascota(){
+    for (let i = 0; i < mokepones.length; i++){
+        if(mascotaJugador === mokepones[i].nombre){
+            return mokepones[i]
+        }        
+    }
 }
 
 window.addEventListener('load', iniciarJuego)
