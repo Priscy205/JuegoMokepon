@@ -46,6 +46,7 @@ let victoriasEnemigo = 0
 let vidasJugador = 3
 let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
+let intervalo
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -59,6 +60,8 @@ class Mokepon {
         this.alto = 108
         this.mapaFoto = new Image ()
         this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 }
 
@@ -124,6 +127,7 @@ function seleccionarMascotaJugador(){
     
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
+    intervalo = setInterval(pintarPersonaje, 50)
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
@@ -296,6 +300,8 @@ function reiniciarJuego() {
 }
 
 function pintarPersonaje(){
+    purrloin.x = purrloin.x + purrloin.velocidadX
+    purrloin.y = purrloin.y + purrloin.velocidadY
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     lienzo.drawImage(
         purrloin.mapaFoto,
@@ -306,9 +312,25 @@ function pintarPersonaje(){
     )
 }
 
-function moverPurrloin(){
-    purrloin.x = purrloin.x + 5
-    pintarPersonaje()
+function moverDerecha(){
+    purrloin.velocidadX = 5
+}
+
+function moverIzquierda(){
+    purrloin.velocidadX = -5
+}
+
+function moverArriba(){
+    purrloin.velocidadY = -5
+}
+
+function moverAbajo(){
+    purrloin.velocidadY = 5
+}
+
+function detenerMovimiento(){
+    purrloin.velocidadX = 0
+    purrloin.velocidadY = 0
 }
 
 window.addEventListener('load', iniciarJuego)
