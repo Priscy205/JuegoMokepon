@@ -127,7 +127,7 @@ function seleccionarMascotaJugador(){
     
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
-    intervalo = setInterval(pintarPersonaje, 50)
+    iniciarMapa()
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
@@ -331,6 +331,33 @@ function moverAbajo(){
 function detenerMovimiento(){
     purrloin.velocidadX = 0
     purrloin.velocidadY = 0
+}
+
+function sePresionoUnaTecla(event){
+    switch (event.key) {
+        case 'ArrowUp':
+            moverArriba()
+            break
+        case 'ArrowDown':
+            moverAbajo()
+            break
+        case 'ArrowLeft':
+            moverIzquierda()
+            break
+        case 'ArrowRight':
+            moverDerecha()
+            break
+        default:
+            break
+    }
+}
+
+function iniciarMapa(){
+    intervalo = setInterval(pintarPersonaje, 50)
+
+    window.addEventListener('keydown', sePresionoUnaTecla)
+
+    window.addEventListener('keyup', detenerMovimiento)
 }
 
 window.addEventListener('load', iniciarJuego)
