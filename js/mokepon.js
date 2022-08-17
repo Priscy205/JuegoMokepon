@@ -53,6 +53,12 @@ class Mokepon {
         this.foto = foto
         this.vida = vida
         this.ataques = []
+        this.x = 20
+        this.y = 30
+        this.ancho = 100
+        this.alto = 108
+        this.mapaFoto = new Image ()
+        this.mapaFoto.src = foto
     }
 }
 
@@ -115,18 +121,9 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'//invisible la seccion seleccionar mascota
     sectionReiniciar.style.display = 'none'//invisible el botón reiniciar
+    
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
-    let imagenDePurrloin = new Image()
-    imagenDePurrloin.src = purrloin.foto
-    lienzo.drawImage(
-        imagenDePurrloin,
-        20,
-        40,
-        100,
-        108
-    )
-    
 
     if (inputWooper.checked){
         spanMascotaJugador.innerHTML = inputWooper.id
@@ -296,6 +293,22 @@ function aleatorio(min, max){
 
 function reiniciarJuego() {
     location.reload()
+}
+
+function pintarPersonaje(){
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        purrloin.mapaFoto,
+        purrloin.x,
+        purrloin.y,
+        purrloin.ancho,
+        purrloin.alto
+    )
+}
+
+function moverPurrloin(){
+    purrloin.x = purrloin.x + 5
+    pintarPersonaje()
 }
 
 window.addEventListener('load', iniciarJuego)
