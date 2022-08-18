@@ -52,25 +52,39 @@ let mapaBackground = new Image()
 mapaBackground.src = './mascotas/mokemap.png'
 
 class Mokepon {
-    constructor(nombre, foto, vida){
-        this.nombre = nombre
+    constructor(nombre, foto, vida, fotoMapa, x=10, y=10){
+        this.nombre = nombre    //atributos
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = 497
-        this.y = 26
+        this.x = x
+        this.y = y
         this.ancho = 100
         this.alto = 108
         this.mapaFoto = new Image ()
-        this.mapaFoto.src = foto
+        this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
     }
+
+    pintarMokepon(){
+    lienzo.drawImage(
+        this.mapaFoto,
+       this.x,
+       this.y,
+       this.ancho,
+       this.alto
+    )
+    }
 }
 
-let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5)
-let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5)
-let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5)
+let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png')
+let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
+let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
+
+let wooperEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png', 900, 80)
+let purrloinEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png', 500, 480)
+let horseaEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png', 220, 220)
 
 wooper.ataques.push(
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
@@ -314,13 +328,10 @@ function pintarCanvas(){
         mapa.width,
         mapa.height
     )
-    lienzo.drawImage(
-        mascotaJugadorObjeto.mapaFoto,
-        mascotaJugadorObjeto.x,
-        mascotaJugadorObjeto.y,
-        mascotaJugadorObjeto.ancho,
-        mascotaJugadorObjeto.alto
-    )
+    mascotaJugadorObjeto.pintarMokepon()
+    wooperEnemigo.pintarMokepon()
+    purrloinEnemigo.pintarMokepon()
+    horseaEnemigo.pintarMokepon()
 }
 
 function moverDerecha(){
