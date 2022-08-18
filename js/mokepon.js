@@ -50,17 +50,29 @@ let lienzo = mapa.getContext("2d")
 let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './mascotas/mokemap.png'
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth - 20
+const anchoMaximoDelMapa = 1000
+
+if (anchoDelMapa > anchoMaximoDelMapa){
+    anchoDelMapa = anchoMaximoDelMapa - 20
+}
+
+alturaQueBuscamos = anchoDelMapa * 300 / 550
+
+mapa. width = anchoDelMapa
+mapa.height = alturaQueBuscamos
 
 class Mokepon {
-    constructor(nombre, foto, vida, fotoMapa, x=497, y=26){
+    constructor(nombre, foto, vida, fotoMapa){
         this.nombre = nombre    //atributos
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = x
-        this.y = y
         this.ancho = 100
         this.alto = 108
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)
         this.mapaFoto = new Image ()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -82,9 +94,9 @@ let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascota
 let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
 let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
 
-let wooperEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png', 900, 80)
-let purrloinEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png', 500, 480)
-let horseaEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png', 220, 220)
+let wooperEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png')
+let purrloinEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
+let horseaEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
 
 wooper.ataques.push(
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
@@ -400,8 +412,6 @@ function sePresionoUnaTecla(event){
 }
 
 function iniciarMapa(){
-    mapa.width = 1100
-    mapa.height = 600
     mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
     intervalo = setInterval(pintarCanvas, 50)
 
