@@ -52,7 +52,7 @@ let mapaBackground = new Image()
 mapaBackground.src = './mascotas/mokemap.png'
 
 class Mokepon {
-    constructor(nombre, foto, vida, fotoMapa, x=10, y=10){
+    constructor(nombre, foto, vida, fotoMapa, x=497, y=26){
         this.nombre = nombre    //atributos
         this.foto = foto
         this.vida = vida
@@ -94,6 +94,14 @@ wooper.ataques.push(
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
 )
 
+wooperEnemigo.ataques.push(
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+)
+
 purrloin.ataques.push(
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
@@ -102,7 +110,23 @@ purrloin.ataques.push(
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
 )
 
+purrloinEnemigo.ataques.push(
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+)
+
 horsea.ataques.push(
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+)
+
+horseaEnemigo.ataques.push(
     { nombre: 'agua 💧', id: 'boton-agua'},
     { nombre: 'agua 💧', id: 'boton-agua'},
     { nombre: 'agua 💧', id: 'boton-agua'},
@@ -161,7 +185,6 @@ function seleccionarMascotaJugador(){
     extraerAtaques(mascotaJugador)
     sectionVerMapa.style.display = 'flex'
     iniciarMapa()
-    seleccionarMascotaEnemigo()
 }
 
 function extraerAtaques(mascotaJugador){
@@ -213,11 +236,9 @@ function secuenciaAtaque(){
     })
 }
 
-function seleccionarMascotaEnemigo(){
-    let mascotaAleatoria = aleatorio (0, mokepones.length - 1)
-
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
-    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques
+function seleccionarMascotaEnemigo(enemigo){
+    spanMascotaEnemigo.innerHTML = enemigo.nombre
+    ataquesMokeponEnemigo = enemigo.ataques
     secuenciaAtaque()
 }
 
@@ -412,7 +433,10 @@ const izquierdaMascota = mascotaJugadorObjeto.x
         return
     }
     detenerMovimiento()
-    alert ("Hay colisión " + enemigo.nombre)
+    clearInterval(intervalo)
+    sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'none'
+    seleccionarMascotaEnemigo(enemigo)
 }
 
 window.addEventListener('load', iniciarJuego)
