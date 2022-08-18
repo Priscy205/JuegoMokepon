@@ -182,17 +182,39 @@ input:checked + label {
     border: 2px solid white;
 }
 
+#ver-mapa button{
+    width: 120px;
+    height: 45px;
+    background: #8BDB81;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 5px 5px 5px 5px;
+    border: transparent;
+    font-family: 'DynaPuff', cursive;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 #botonesDireccion{
     display: flex;
 }
 
 
-@media (max-width:750px){
+@media (max-width:815px){
     #contenedorTarjetas{
         flex-direction:column;
     }
 
     #tarjetas-ataque{
         flex-direction:column;
+    }
+}
+
+@media (max-width: 300px){
+    #ver-mapa div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
