@@ -65,7 +65,8 @@ mapa. width = anchoDelMapa
 mapa.height = alturaQueBuscamos
 
 class Mokepon {
-    constructor(nombre, foto, vida, fotoMapa){
+    constructor(nombre, foto, vida, fotoMapa, id = null){
+        this.id = id
         this.nombre = nombre    //atributos
         this.foto = foto
         this.vida = vida
@@ -95,57 +96,42 @@ let wooper = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascota
 let purrloin = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
 let horsea = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
 
-let wooperEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png')
-let purrloinEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
-let horseaEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
+//let wooperEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png')
+//let purrloinEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
+//let horseaEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
 
-wooper.ataques.push(
+const wooper_ataques = [
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
     { nombre: 'agua 💧', id: 'boton-agua'},
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
-)
+] 
 
-wooperEnemigo.ataques.push(
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
+const purrloin_ataques = [
     { nombre: 'fuego 🔥', id: 'boton-fuego'},
-)
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'tierra 🌿', id: 'boton-tierra'},
+]
 
-purrloin.ataques.push(
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
+const horsea_ataques = [
     { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'agua 💧', id: 'boton-agua'},
+    { nombre: 'fuego 🔥', id: 'boton-fuego'},
     { nombre: 'tierra 🌿', id: 'boton-tierra'},
-)
+]
 
-purrloinEnemigo.ataques.push(
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-)
+wooper.ataques.push(...wooper_ataques)
+//wooperEnemigo.ataques.push(...wooper_ataques)
 
-horsea.ataques.push(
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-)
+purrloin.ataques.push(...purrloin_ataques)
+//purrloinEnemigo.ataques.push(...purrloin_ataques)
 
-horseaEnemigo.ataques.push(
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'agua 💧', id: 'boton-agua'},
-    { nombre: 'fuego 🔥', id: 'boton-fuego'},
-    { nombre: 'tierra 🌿', id: 'boton-tierra'},
-)
+horsea.ataques.push(...horsea_ataques)
+//horseaEnemigo.ataques.push(...horsea_ataques)
 
 mokepones.push(wooper,purrloin,horsea)
 
@@ -415,8 +401,32 @@ function enviarPosicion(x, y){
             x,
             y
         })
-
     })
+        .then(function (res){
+          if (res.ok){
+                res.json()
+                    .then(function({enemigos}){
+                        console.log (enemigos)
+                        let mokeponEnemigo = null
+                        enemigos.forEach(function (enemigo){
+                            const mokeponNombre = enemigo.mokepon.nombre || ""
+                            if (mokeponNombre === "Wooper"){
+                                mokeponEnemigo = new Mokepon('Wooper','./mascotas/mokepon_wooper.png', 5, './mascotas/mokepon_wooper.png')
+                            }else if (mokeponNombre === "Purrloin"){
+                                mokeponEnemigo = new Mokepon('Purrloin','./mascotas/mokepon_purrloin.png', 5, './mascotas/mokepon_purrloin.png')
+                            }else if (mokeponNombre === "Horsea"){
+                                mokeponEnemigo = new Mokepon('Horsea','./mascotas/mokepon_horsea.png', 5, './mascotas/mokepon_horsea.png')
+                            }
+
+                            mokeponEnemigo.x = enemigo.x
+                            mokeponEnemigo.y = enemigo.y
+
+                            mokeponEnemigo.pintarMokepon()
+                        })
+                    })
+            }
+        })
+    
 }
 
 function moverDerecha(){
